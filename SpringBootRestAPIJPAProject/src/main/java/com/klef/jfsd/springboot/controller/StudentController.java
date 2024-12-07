@@ -43,15 +43,4 @@ public class StudentController
 	{
 		return service.viewstudentbyid(sid);
 	}
-	@DeleteMapping("delete")
-	public String deletestudent(@RequestParam("id") int sid)
-	{
-		return service.deletestudent(sid);
-	}
-	@PutMapping("update")
-	public String updatestudent(@RequestBody Student s)
-	{
-		return service.updatestudent(s);
-	}
-	
 }	
