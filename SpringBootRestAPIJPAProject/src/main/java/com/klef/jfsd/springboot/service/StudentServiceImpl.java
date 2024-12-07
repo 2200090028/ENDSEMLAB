@@ -20,54 +20,6 @@ public class StudentServiceImpl implements StudentService
 		repository.save(s);
 		return "Student added Successfully";
 	}
-
-	@Override
-	public String updatestudent(Student s) 
-	{
-		Optional<Student> object = repository.findById(s.getId());
-		String msg = null;
-		
-		if(object.isPresent())
-		{
-			Student st = object.get();
-			st.setAge(s.getAge());
-			st.setContact(s.getContact());
-			st.setDepartment(s.getDepartment());
-			st.setEmail(s.getEmail());
-			st.setGender(s.getGender());
-			st.setName(s.getName());
-			
-			repository.save(st);
-			
-			msg = "Student Updated Successfully";
-		}
-		else
-		{
-			msg = "Student ID Not Found";
-		}
-		return msg;
-	}
-
-	@Override
-	public String deletestudent(int sid)
-	{
-		Optional<Student> object = repository.findById(sid);
-		
-		String msg = null;
-		if(object.isPresent())
-		{
-			Student s= object.get();
-			repository.delete(s);
-			msg = "Student Deleted Successfully";
-		}
-		else
-		{
-			msg = "Student Id Is Not Found";
-		}
-		return msg;
-	}
-
-	@Override
 	public Student viewstudentbyid(int sid)
 	{
 		return repository.findById(sid).get();
